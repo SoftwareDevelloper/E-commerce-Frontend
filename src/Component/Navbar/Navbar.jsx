@@ -11,6 +11,18 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
   const toggleDropdown = () => setOpen(!open);
+    // Get token from localStorage
+  const token = localStorage.getItem("auth-token");
+  let userId = "";
+  if (token) {
+    try {
+      const decoded = jwtDecode(token);
+      console.log(decoded);
+      userId = decoded.user?.id || decoded.user?._id;
+    } catch (error) {
+      console.error("Invalid token", error);
+    }
+  }
   return (
     <nav className='navbar'>
         <Link to={"/"}>
@@ -62,17 +74,17 @@ const Navbar = () => {
              {open && (
                 <div className="dropdown_profile_client">
                     <li>
-                      <Link to={'/Profile'} style={{color:"white"}} onClick={toggleDropdown}>
+                      <Link to={`/Profile/${userId}`} style={{color:"white"}} onClick={toggleDropdown}>
                         <User2 style={{width:"25px",height:"25px",color:"white"}}/> Manage My Account
                       </Link>
                     </li>
                     <li>
-                      <Link to={'/MyOrders'} style={{color:"white"}} onClick={toggleDropdown}>
+                      <Link to={`/MyOrders/${userId}`} style={{color:"white"}} onClick={toggleDropdown}>
                       <ShoppingBag style={{width:"25px",height:"25px"}}/> My Order
                       </Link>
                     </li>
                     <li>
-                      <Link to={'/MyCancellations'} style={{color:"white"}} onClick={toggleDropdown}>
+                      <Link to={`/MyCancellations/${userId}`} style={{color:"white"}} onClick={toggleDropdown}>
                        <CircleX style={{width:"25px",height:"25px"}}/> My Cancellations
                       </Link>
                     </li>
