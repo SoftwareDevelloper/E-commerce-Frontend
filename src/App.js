@@ -14,6 +14,8 @@ import Login from './Pages/SignIn/Login';
 import SignUp from './Pages/SignUp/SignUp';
 import Wishlist from './Pages/Wishlist/Wishlist';
 import CheckoutWrapper from './Pages/Checkout/CheckoutWrapper';
+import Orders from './Pages/Profile/Orders';
+import CancelOrder from './Pages/Profile/CancelOrder';
 function App() {
   return (
     <BrowserRouter>
@@ -33,7 +35,9 @@ function App() {
           <Route path='cart' element={ <Cart/> } />
           <Route path='Collections' element={<Collections/>}/>
           <Route path="/:category" element={<Products/>} />
-          <Route path='/Profile' element={ <Profile/> }/>
+          <Route path="/Profile/:id" element={<Profile />} />
+          <Route path="/MyOrders/:id" element={<Orders />} />
+          <Route path="/MyCancellations/:id" element={ <CancelOrder/> } />
           <Route path='/CheckOut' element={ <CheckoutWrapper/> }/>
 
         </Routes>
