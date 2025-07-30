@@ -77,7 +77,9 @@ const Collections = () => {
         {
                   allproducts.map((product,index) =>(
                       <div key={index} className='product-card'>
-                          <img src={product.image} alt="" className='prod_img' />
+                          <Link to={`/Product/${product.id}`}>
+                            <img src={product.image} alt="" className='prod_img' />
+                          </Link>
                           <p className='prod_name'>{product.name}</p>
                           <div className="price">
                           <p className='product_new_price'> $ {product.newPrice} </p> 
