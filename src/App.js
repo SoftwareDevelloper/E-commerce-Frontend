@@ -16,6 +16,8 @@ import Wishlist from './Pages/Wishlist/Wishlist';
 import CheckoutWrapper from './Pages/Checkout/CheckoutWrapper';
 import Orders from './Pages/Profile/Orders';
 import CancelOrder from './Pages/Profile/CancelOrder';
+import ProductsDetails from './Pages/ProductsDetails';
+
 function App() {
   return (
     <BrowserRouter>
@@ -39,6 +41,7 @@ function App() {
           <Route path="/MyOrders/:id" element={<Orders />} />
           <Route path="/MyCancellations/:id" element={ <CancelOrder/> } />
           <Route path='/CheckOut' element={ <CheckoutWrapper/> }/>
+          <Route path='/Product/:id' element={<ProductsDetails/>}/>
 
         </Routes>
       </div>
