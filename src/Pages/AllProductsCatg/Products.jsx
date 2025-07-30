@@ -54,7 +54,9 @@ const Products = () => {
       {
         products.map((products)=>(
             <div className="product_card" key={products.id}>
-                <img src={products.image} alt={products.name} />
+                <Link to={`/Product/${products.id}`}>
+                            <img src={products.image} alt="" className='prod_img' />
+                        </Link>
                 <p className='prod_name'> {products.name} </p>
                 <div className="prices">
                     <p className='new_price'> ${products.newPrice} </p>
